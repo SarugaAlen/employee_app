@@ -4,9 +4,10 @@
 <head>
     <title>Advansys</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 </head>
 
 <body>
@@ -16,6 +17,7 @@
 
     <script>
         var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
+
         app.config(function ($routeProvider) {
             $routeProvider
                 .when('/', {
@@ -41,7 +43,7 @@
             }, {
                 name: 'Mike Johnson',
                 city: 'Chicago'
-            }]
+            }];
 
             var factory = {};
             factory.getCustomers = function () {
@@ -49,7 +51,7 @@
             };
 
             return factory;
-        })
+        }); 
 
         app.controller('SimpleController', function ($scope, SimpleFactory) {
             $scope.customers = [];
@@ -67,7 +69,7 @@
                     city: $scope.newCustomer.city
                 });
                 $scope.newCustomer = {};
-            }
+            };
         });
     </script>
 </body>

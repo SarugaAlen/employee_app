@@ -10,16 +10,33 @@
 
     listVm.employees = [];
     listVm.loading = true;
-
     listVm.selectedEmployeeId = null;
+    listVm.selectedEmployeeData = null;
+    listVm.showDetailsPopup = false; 
 
-    listVm.selectedEmployee = function (employee) {
+    listVm.showDetails = function (employee) {
       if (!employee || !employee.id) {
         console.log("No employee or employee id");
+        closeDetailsPopup();
         return;
       }
       listVm.selectedEmployeeId = employee.id;
+      listVm.selectedEmployeeData = employee;
+      listVm.showDetailsPopup = true;
     };
+
+    listVm.closeDetailsPopup = function () {
+        listVm.showDetailsPopup = false;
+        listVm.selectedEmployeeId = null;
+        listVm.selectedEmployeeData = null;
+        console.log("Custom popup closed.");
+    };
+
+    listVm.deleteEmployee = function (employee) {
+      if (confirm('Are you sure you want to delete this employee?')) {
+       
+      }
+    }
 
     function init() {
       listVm.loading = true;

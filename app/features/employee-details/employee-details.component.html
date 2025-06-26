@@ -1,0 +1,22 @@
+<div class="panel panel-info" ng-if="detailsVm.employee">
+    <div class="panel-heading">
+        <h3 class="panel-title mb-0">Employee: {{ detailsVm.employee.name }}</h3>
+    </div>
+    <div class="panel-body">
+        <p class="detail-line"><strong>Username:</strong> {{ detailsVm.employee.username }}</p>
+        <p class="detail-line"><strong>Name:</strong> {{ detailsVm.employee.name }}</p>
+        <p class="detail-line"><strong>Email:</strong> {{ detailsVm.employee.email }}</p>
+        <p class="detail-line"><strong>Phone number:</strong> {{ detailsVm.employee.phone }}</p>
+        <p class="detail-line"><strong>Website:</strong> {{ detailsVm.employee.website }}</p>
+        <p class="detail-line"><strong>Company:</strong> {{ detailsVm.employee.company.name }}</p>
+
+        <div class="address-section mt-3"> <p class="mb-1"><strong>Address:</strong></p>
+            <p class="mb-0 address-line">{{ detailsVm.employee.address.street }}</p>
+            <p class="mb-0 address-line">{{ detailsVm.employee.address.suite }}</p>
+            <p class="mb-0 address-line">{{ detailsVm.employee.address.city }}, {{ detailsVm.employee.address.zipcode }}</p>
+        </div>
+    </div>
+</div>
+<div ng-if="!detailsVm.employee && detailsVm.employee !== undefined" class="alert alert-warning text-center">
+    Please select an employee to view details.
+</div>

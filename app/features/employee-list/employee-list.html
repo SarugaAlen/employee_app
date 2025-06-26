@@ -19,7 +19,7 @@
             </thead>
             <tbody>
 
-                <tr ng-repeat="employee in listVm.employees" ng-click="listVm.selectedEmployee(employee)"
+                <tr ng-repeat="employee in listVm.employees" ng-click="listVm.showDetails(employee)"
                     ng-class="{ 'selected-row': employee.id === listVm.selectedEmployeeId}" long-press
                     style="cursor: pointer;">
                     <td>{{ employee.id }}</td>
@@ -33,5 +33,23 @@
         <div ng-if="!listVm.loading && listVm.employees.length === 0" class="alert alert-info text-center">
             No employees found.
         </div>
+
+        <div class="custom-popup-overlay" ng-if="listVm.showDetailsPopup">
+            <div class="custom-popup-content panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title mb-0">Employee Details</h3>
+                    <button type="button" class="close" ng-click="listVm.closeDetailsPopup()">&times;</button>
+                </div>
+                <div class="panel-body">
+                    <employee-details employee="listVm.selectedEmployeeData"></employee-details>
+                </div>
+                <div class="panel-footer text-right">
+                    <button class="btn btn-danger"
+                        ng-click="listVm.deleteEmployee(listVm.selectedEmployeeData)">Delete</button>
+                    <button class="btn btn-default ml-2" ng-click="listVm.closeDetailsPopup()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

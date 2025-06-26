@@ -11,6 +11,16 @@
     listVm.employees = [];
     listVm.loading = true;
 
+    listVm.selectedEmployeeId = null;
+
+    listVm.selectedEmployee = function (employee) {
+      if (!employee || !employee.id) {
+        console.log("No employee or employee id");
+        return;
+      }
+      listVm.selectedEmployeeId = employee.id;
+    };
+
     function init() {
       listVm.loading = true;
       EmployeeFactory.getEmployees()

@@ -1,77 +1,33 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html lang="en" ng-app="employeeApp">
 
 <head>
-    <title>Advansys</title>
+    <title>Emplopee App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="assets/css/app.css">
+    
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+
+    <script src="app/features/employee-list/employee-list.module.js"></script>
+    <script src="app/features/employee-list/employee-list.factory.js"></script>
+    <script src="app/features/employee-list/employee-list.controller.js"></script>
+    <script src="app/app.js"></script>
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Company Employees</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div ng-view></div>
     </div>
-
-    <script>
-        var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
-
-        app.config(function ($routeProvider) {
-            $routeProvider
-                .when('/', {
-                    controller: 'SimpleController',
-                    templateUrl: 'Partials/view1.html'
-                })
-                .when('/view2', {
-                    controller: 'SimpleController',
-                    templateUrl: 'Partials/view2.html'
-                })
-                .otherwise({
-                    redirectTo: '/'
-                });
-        });
-
-        app.factory('SimpleFactory', function ($http) {
-            var customers = [{
-                name: 'John Doe',
-                city: 'New York'
-            }, {
-                name: 'Jane Smith',
-                city: 'Los Angeles'
-            }, {
-                name: 'Mike Johnson',
-                city: 'Chicago'
-            }];
-
-            var factory = {};
-            factory.getCustomers = function () {
-                return customers;
-            };
-
-            return factory;
-        }); 
-
-        app.controller('SimpleController', function ($scope, SimpleFactory) {
-            $scope.customers = [];
-
-            init();
-
-            function init() {
-                $scope.customers = SimpleFactory.getCustomers();
-                $scope.newCustomer = {};
-            }
-
-            $scope.addCustomer = function () {
-                $scope.customers.push({
-                    name: $scope.newCustomer.name,
-                    city: $scope.newCustomer.city
-                });
-                $scope.newCustomer = {};
-            };
-        });
-    </script>
 </body>
 
 </html>

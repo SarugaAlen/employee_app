@@ -19,7 +19,9 @@
             </thead>
             <tbody>
 
-                <tr ng-repeat="employee in listVm.employees" ng-click="listVm.selectedEmployee(employee)" ng-class="{ 'selected-row': employee.id === listVm.selectedEmployeeId}" style="cursor: pointer;">
+                <tr ng-repeat="employee in listVm.employees" ng-click="listVm.selectedEmployee(employee)"
+                    ng-class="{ 'selected-row': employee.id === listVm.selectedEmployeeId}" long-press
+                    style="cursor: pointer;">
                     <td>{{ employee.id }}</td>
                     <td>{{ employee.name }}</td>
                     <td>{{ employee.username }}</td>
@@ -33,4 +35,3 @@
         </div>
     </div>
 </div>
-

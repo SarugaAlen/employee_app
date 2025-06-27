@@ -34,22 +34,11 @@
             No employees found.
         </div>
 
-        <div class="custom-popup-overlay" ng-if="listVm.showDetailsPopup">
-            <div class="custom-popup-content panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title mb-0">Employee Details</h3>
-                    <button type="button" class="close" ng-click="listVm.closeDetailsPopup()">&times;</button>
-                </div>
-                <div class="panel-body">
-                    <employee-details employee="listVm.selectedEmployeeData"></employee-details>
-                </div>
-                <div class="panel-footer text-right">
-                    <button class="btn btn-danger"
-                        ng-click="listVm.deleteEmployee(listVm.selectedEmployeeData)">Delete</button>
-                    <button class="btn btn-default ml-2" ng-click="listVm.closeDetailsPopup()">Cancel</button>
-                </div>
-            </div>
-        </div>
+        <custom-popup ng-if="listVm.showDetailsPopup" title="Employee Details" on-close="listVm.closeDetailsPopup()"
+            on-primary-action="listVm.deleteEmployee(listVm.selectedEmployeeData)" show-primary-action-button="true"
+            primary-action-label="Delete" primary-action-class="btn-danger">
+            <employee-details employee="listVm.selectedEmployeeData"></employee-details>
+        </custom-popup>
 
     </div>
 </div>
